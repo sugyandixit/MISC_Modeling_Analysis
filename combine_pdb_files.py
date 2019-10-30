@@ -4,7 +4,7 @@ import os
 
 def get_pdb_files(dirpath, startid):
 	
-	files = os.listdir('.')
+	files = os.listdir(dirpath)
 	files = [x for x in files if x.endswith('.pdb')]
 	files = [x for x in files if x.startswith(startid)]
 	return files
@@ -39,7 +39,8 @@ def combine_pdb_files(list_of_pdb_files, dirpath):
 
 if __name__ == '__main__':
 	
-	dirpath = os.getcwd()
-	startid = 'repid'
+	# dirpath = os.getcwd()
+	dirpath = r"C:\Users\sugyan\Documents\MembraneMDfiles\charmm_gui_iapp_nanodisc\iappdimer_integral\19\step7_structs\output\combine_pdb_files"
+	startid = 'step7'
 	list_pdb_files = get_pdb_files(dirpath, startid)
 	combine_pdb_files(list_pdb_files, dirpath)

@@ -45,20 +45,20 @@ def conv_imp_to_csv(impccsfname, imp_fname, ccs_pa, ccs_tm, dirpath, frame=None)
 
 
 
-def read_impccs_to_csv(impfname, dirpath, frame=None):
+def read_impccs_to_csv(impfname, dirpath, frame=2):
     fname, ccs_pa, ccs_tm = read_impact_ccs_file(impfname, dirpath)
     if frame:
         frame_ = []
         for item in fname:
             chars = item.split('.pdb')[0]
-            framenum = chars.split('_')[-1]
+            framenum = chars.split('_')[frame]
             frame_.append(framenum)
         conv_imp_to_csv(impfname, fname, ccs_pa, ccs_tm, dirpath, frame=frame_)
     else:
         conv_imp_to_csv(impfname, fname, ccs_pa, ccs_tm, dirpath, frame=frame)
 
 if __name__=='__main__':
-    dirpath = r"C:\Users\sugyan\Documents\MembraneMDfiles\PNP_dimer_membprot"
+    dirpath = r"C:\Users\sugyan\Documents\MembraneMDfiles\charmm_gui_iapp_nanodisc\iappdimer_integral\19\step7_structs\output"
     impccs_files = get_impccs_files(dirpath)
     for file in impccs_files:
-        read_impccs_to_csv(file, dirpath, frame=None)
+        read_impccs_to_csv(file, dirpath, frame=2)
